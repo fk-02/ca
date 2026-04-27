@@ -41,3 +41,6 @@
 41. sum-sub-ele-lim-bt.py
 42. tra-sal-usi-bra.py
 43. wor-bre-dp.py
+44. ps-co.txt
+45. ps-ma.txt
+46. ps-nq.txt
