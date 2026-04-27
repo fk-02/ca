@@ -1,8 +1,9 @@
-n=int(input());r=[];b=[0]*n
-def f(c):
- if c==n:r.append(b[:]);return
- for i in range(n):
-  if all(b[j]!=i and abs(b[j]-i)!=abs(j-c)for j in range(c)):
-   b[c]=i;f(c+1)
-f(0)
-print(-1 if not r else"\n".join(" ".join(map(str,s))for s in r))
+from itertools import permutations
+n = int(input())
+ok = 0
+for p in permutations(range(n)):
+    if all(abs(p[i]-p[j]) != abs(i-j) for i in range(n) for j in range(i)):
+        print(*p)
+        ok = 1
+if not ok:
+    print(-1)
