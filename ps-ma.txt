@@ -1,0 +1,40 @@
+Matrix Chain Multiplication using Dynamic Programming
+
+Definition:
+Matrix Chain Multiplication determines the most efficient way to multiply a sequence of matrices by minimizing the total number of scalar multiplications.
+
+Concept Used:
+
+- Dynamic Programming
+- Optimal Substructure
+- Overlapping Subproblems
+
+Recurrence Relation:
+Let m[i][j] be the minimum cost of multiplying matrices from i to j:
+
+m[i][j] = min (m[i][k] + m[k+1][j] + p[i-1] * p[k] * p[j])
+for i ≤ k < j
+
+Pseudocode:
+
+MatrixChainOrder(p, n):
+    create m[n][n]
+
+    for i = 1 to n:
+        m[i][i] = 0
+
+    for L = 2 to n:
+        for i = 1 to n-L+1:
+            j = i + L - 1
+            m[i][j] = ∞
+
+            for k = i to j-1:
+                cost = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j]
+
+                if cost < m[i][j]:
+                    m[i][j] = cost
+
+    return m[1][n]
+
+Time Complexity: O(n³)
+Space Complexity: O(n²)

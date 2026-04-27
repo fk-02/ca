@@ -1,0 +1,34 @@
+Coin Change Problem using Dynamic Programming
+
+Definition:
+Find the minimum number of coins required to make a given amount using given denominations.
+
+Concept Used:
+
+- Dynamic Programming
+- Unbounded Knapsack
+
+Recurrence Relation:
+dp[i] = min(dp[i - coin] + 1)
+
+Pseudocode:
+
+CoinChange(coins[], n, amount):
+    create dp[0...amount]
+
+    dp[0] = 0
+
+    for i = 1 to amount:
+        dp[i] = ∞
+
+        for j = 1 to n:
+            if coins[j] <= i:
+                dp[i] = min(dp[i], dp[i - coins[j]] + 1)
+
+    if dp[amount] == ∞:
+        return -1
+    else:
+        return dp[amount]
+
+Time Complexity: O(n × amount)
+Space Complexity: O(amount)
